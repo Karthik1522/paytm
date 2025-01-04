@@ -2,29 +2,47 @@ import { useEffect, useState } from "react"
 import { Button } from "./Buttons"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-let timeoutId;
+import useDebounce from "../hooks/useDebounce";
+// let timeoutId;
 
 export const Users = ({currentUser}) => {
     // Replace with backend call
     const [users, setUsers] = useState([]);
     const [filter, setFilter] = useState("");
+
     
-    
+    const finalFilter = useDebounce(filter, 500);
+    //whenever a custom hook is being used in a component and whenever it gets refreshed or return a new value
+    //this 'Users' component gets re-rendered, new value comes in finalFilter and when it is changed new useEffect takes place
+
     useEffect(()=>{
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(()=>{
-            axios.get("http://localhost:3000/user/bulk?filter="+filter)
+        axios.get("http://localhost:3000/user/bulk?filter="+finalFilter)
             .then(function(response){
-
+    
                 const filtered = response.data.users.filter(user => {
-
                     return user.userId != currentUser;
-                  });
-                  
+                });
+                      
                 setUsers(filtered);
-            })
-        }, 500);
-    },[filter,currentUser]);
+        })
+        
+    },[finalFilter])
+    
+    // useEffect(()=>{
+    //     clearTimeout(timeoutId);
+    //     timeoutId = setTimeout(()=>{
+    //         axios.get("http://localhost:3000/user/bulk?filter="+filter)
+    //         .then(function(response){
+
+    //             const filtered = response.data.users.filter(user => {
+
+    //                 return user.userId != currentUser;
+    //               });
+                  
+    //             setUsers(filtered);
+    //         })
+    //     }, 500);
+    // },[filter,currentUser]);
 
     return <>
         <div className="font-bold mt-6 text-lg">
