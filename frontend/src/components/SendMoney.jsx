@@ -29,7 +29,7 @@ export const SendMoney = () => {
     function sendMoney() {
         const token = localStorage.getItem("token");
     
-        axios.post("http://paytm:8080/account/transfer", {
+        axios.post("http://paytm.com:8080/account/transfer", {
             to: String(id),
             amount: Number(amount)
         }, {
