@@ -6,7 +6,7 @@ export const Balance = () => {
 
     useEffect(()=>{
         const token = localStorage.getItem("token");
-        axios.get("http://localhost:3000/account/balance",{
+        axios.get("http://paytm:8080/account/balance",{
             headers: { Authorization: "Bearer " + token },
           })
           .then(function(res){

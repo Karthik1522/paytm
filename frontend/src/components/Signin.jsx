@@ -19,7 +19,7 @@ export function Signin() {
 
     if (token) {
       axios
-        .get("http://localhost:3000/me", {
+        .get("http://paytm:8080/me", {
           headers: { Authorization: "Bearer " + token },
         })
         .then((response) => {
@@ -42,7 +42,7 @@ export function Signin() {
 
   async function login(event) {
     try {
-      const res = await axios.post("http://localhost:3000/user/signIn", {
+      const res = await axios.post("http://paytm:8080/user/signIn", {
         username: username.current.value,
         password: password.current.value,
       });

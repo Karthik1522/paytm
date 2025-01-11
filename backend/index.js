@@ -37,6 +37,7 @@ app.get("/me", (req, res) => {
 app.use("/user",userRouter);
 app.use("/account",accountRouter);
 
-app.listen(3000,()=>{
-    console.log("Server listening on PORT 3000");
+const port  = 8080;
+app.listen(port,()=>{
+    console.log("Server listening on PORT "+port);
 });

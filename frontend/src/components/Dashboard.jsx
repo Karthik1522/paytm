@@ -13,7 +13,7 @@ export function Dashboard(){
         const token = localStorage.getItem("token");
     
           axios
-            .get("http://localhost:3000/me", {
+            .get("http://paytm:8080/me", {
               headers: { Authorization: "Bearer " + token },
             })
             .then((response) => {

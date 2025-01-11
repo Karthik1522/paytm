@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require("bcrypt");
 
-mongoose.connect('db-connection');
+mongoose.connect('mongodb+srv://DBADMIN:RhZs7WYMCKgnKgxe@cluster0.rmvok.mongodb.net/Paytm');
 
 const UserSchema = new mongoose.Schema({
     username: {

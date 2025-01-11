@@ -21,7 +21,7 @@ export function Signup() {
   
       if (token) {
         axios
-          .get("http://localhost:3000/me", {
+          .get("http://paytm:8080/me", {
             headers: { Authorization: "Bearer " + token },
           })
           .then((response) => {
@@ -42,7 +42,7 @@ export function Signup() {
     }, [navigateToDashboard, navigate]);
 
     function createAccount() {
-        fetch("http://localhost:3000/user/signUp", {
+        fetch("http://paytm:8080/user/signUp", {
             method: "POST",
             body: JSON.stringify({
                 username: username.current.value,  // Add `.value` to access the input value

@@ -16,7 +16,7 @@ export const Users = ({currentUser}) => {
     //this 'Users' component gets re-rendered, new value comes in finalFilter and when it is changed new useEffect takes place
 
     useEffect(()=>{
-        axios.get("http://localhost:3000/user/bulk?filter="+finalFilter)
+        axios.get("http://paytm:8080/user/bulk?filter="+finalFilter)
             .then(function(response){
     
                 const filtered = response.data.users.filter(user => {
@@ -31,7 +31,7 @@ export const Users = ({currentUser}) => {
     // useEffect(()=>{
     //     clearTimeout(timeoutId);
     //     timeoutId = setTimeout(()=>{
-    //         axios.get("http://localhost:3000/user/bulk?filter="+filter)
+    //         axios.get("http://paytm:8080/user/bulk?filter="+filter)
     //         .then(function(response){
 
     //             const filtered = response.data.users.filter(user => {
